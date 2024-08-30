@@ -27,6 +27,7 @@ const main = async () => {
 
   const flags = parseArgs(Deno.args, {});
 
+  // ユーザが入力したリポジトリ名
   const inputRepo = getInputRepo(flags._);
   if (repos.includes(inputRepo)) {
     const ghCloneCmd = new Deno.Command("gh", {
