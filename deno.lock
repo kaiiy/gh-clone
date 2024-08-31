@@ -2,15 +2,18 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "jsr:@std/cli": "jsr:@std/cli@1.0.4",
       "jsr:@std/cli@1.0.4": "jsr:@std/cli@1.0.4",
-      "npm:ink": "npm:ink@5.0.1_react@18.3.1",
-      "npm:ink-select-input": "npm:ink-select-input@6.0.0_ink@5.0.1__react@18.3.1_react@18.3.1",
-      "npm:react": "npm:react@18.3.1"
+      "jsr:@std/fmt": "jsr:@std/fmt@1.0.1",
+      "npm:ink-select-input@6.0.0": "npm:ink-select-input@6.0.0_ink@5.0.1__react@18.3.1_react@18.3.1",
+      "npm:ink@5.0.1": "npm:ink@5.0.1_react@18.3.1",
+      "npm:react@17.0.2": "npm:react@17.0.2"
     },
     "jsr": {
       "@std/cli@1.0.4": {
         "integrity": "79ca75add572a99a8ba93ae37ccbd8d43fb4e2b635a8a7ebebb4f2d092048764"
+      },
+      "@std/fmt@1.0.1": {
+        "integrity": "ef76c37faa7720faa8c20fd8cc74583f9b1e356dfd630c8714baa716a45856ab"
       }
     },
     "npm": {
@@ -176,6 +179,10 @@
         "integrity": "sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==",
         "dependencies": {}
       },
+      "object-assign@4.1.1": {
+        "integrity": "sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==",
+        "dependencies": {}
+      },
       "onetime@5.1.2": {
         "integrity": "sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==",
         "dependencies": {
@@ -192,6 +199,13 @@
           "loose-envify": "loose-envify@1.4.0",
           "react": "react@18.3.1",
           "scheduler": "scheduler@0.23.2"
+        }
+      },
+      "react@17.0.2": {
+        "integrity": "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==",
+        "dependencies": {
+          "loose-envify": "loose-envify@1.4.0",
+          "object-assign": "object-assign@4.1.1"
         }
       },
       "react@18.3.1": {
