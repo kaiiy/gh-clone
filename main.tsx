@@ -5,6 +5,8 @@ import { ghClone, ghList } from "./cmd.ts";
 import SelectRepo from "./SelectRepo.tsx";
 import { brightBlue } from "jsr:@std/fmt/colors";
 
+const VERSION = "0.1.0";
+
 const extractInputRepo = (input: (string | number)[]) => {
   if (input.length !== 1) {
     return undefined;
@@ -27,11 +29,30 @@ const partialMatch = (
 
 const main = async () => {
   const flags = parseArgs(Deno.args, {
+    boolean: ["version", "help"],
     string: ["user"],
     alias: {
-      user: "u",
+      u: "user",
+      v: "version",
+      V: "version",
+      h: "help",
     },
   });
+
+  if (flags.version) {
+    console.log(VERSION);
+    Deno.exit(0);
+  }
+
+  if (flags.help) {
+    console.log(`Usage: gh-clone [options] [repository]
+      
+Options:
+-u, --user <user>   List repositories of the specified user
+-v, --version       Show version
+-h, --help          Show help`);
+    Deno.exit(0);
+  }
 
   // リポジトリ候補
   const repos = await ghList(flags.user);
