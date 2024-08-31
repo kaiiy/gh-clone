@@ -5,7 +5,7 @@ import { ghClone, ghList } from "./cmd.ts";
 import SelectRepo from "./SelectRepo.tsx";
 import { brightBlue } from "jsr:@std/fmt/colors";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 const extractInputRepo = (input: (string | number)[]) => {
   if (input.length !== 1) {
@@ -46,7 +46,7 @@ const main = async () => {
 
   if (flags.help) {
     console.log(`Usage: gh-clone [options] [repository]
-      
+
 Options:
 -u, --user <user>   List repositories of the specified user
 -v, --version       Show version
@@ -65,9 +65,12 @@ Options:
   // 部分一致が1個だけ
   if (matchedRepos.length === 1) {
     await ghClone(matchedRepos[0]);
-  } else {
+  } else if (matchedRepos.length > 1) {
     console.log(brightBlue("- Select a repository to clone"));
     render(<SelectRepo repos={matchedRepos} />);
+  } else {
+    console.error("No repositories found");
+    Deno.exit(1);
   }
 };
 
