@@ -38,6 +38,7 @@ const ghClone = async (repo: string) => {
     console.log(brightGreen("- gh repo clone " + repo));
     process.stdout.pipeTo(Deno.stdout.writable);
     process.stderr.pipeTo(Deno.stderr.writable);
+
     const { code } = await process.status;
     Deno.exit(code);
 };

@@ -5,7 +5,7 @@ import { ghClone, ghList } from "./cmd.ts";
 import SelectRepo from "./SelectRepo.tsx";
 import { brightBlue } from "jsr:@std/fmt/colors";
 
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 const extractInputRepo = (input: (string | number)[]) => {
   if (input.length !== 1) {
@@ -68,6 +68,10 @@ Options:
   } else if (matchedRepos.length > 1) {
     console.log(brightBlue("- Select a repository to clone"));
     render(<SelectRepo repos={matchedRepos} />);
+
+    // カーソルを表示
+    const showCursor = new TextEncoder().encode("\x1b[?25h");
+    await Deno.stdout.write(showCursor);
   } else {
     console.error("No repositories found");
     Deno.exit(1);
