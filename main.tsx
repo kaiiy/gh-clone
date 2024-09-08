@@ -4,28 +4,9 @@ import React from "npm:react@17.0.2";
 import { ghClone, ghList } from "./cmd.ts";
 import SelectRepo from "./SelectRepo.tsx";
 import { brightBlue } from "jsr:@std/fmt/colors";
+import { extractInputRepo, partialMatch } from "./lib.ts";
 
-const VERSION = "0.1.2";
-
-const extractInputRepo = (input: (string | number)[]) => {
-  if (input.length !== 1) {
-    return undefined;
-  }
-  return input[0].toString().trim();
-};
-
-// 部分一致
-const partialMatch = (
-  repos: string[],
-  inputRepo: string | undefined,
-): string[] => {
-  if (inputRepo === undefined) {
-    return repos;
-  }
-
-  const matchedRepos = repos.filter((repo) => repo.includes(inputRepo));
-  return matchedRepos;
-};
+const VERSION = "0.1.3";
 
 const main = async () => {
   const flags = parseArgs(Deno.args, {
@@ -48,7 +29,7 @@ const main = async () => {
     console.log(`Usage: gh-clone [options] [repository]
 
 Options:
--u, --user <user>   List repositories of the specified user
+-u, --user <user>   Set the specified user
 -v, --version       Show version
 -h, --help          Show help`);
     Deno.exit(0);
@@ -64,10 +45,10 @@ Options:
   const matchedRepos = partialMatch(repos, inputRepo);
   // 部分一致が1個だけ
   if (matchedRepos.length === 1) {
-    await ghClone(matchedRepos[0]);
+    await ghClone(flags.user, matchedRepos[0]);
   } else if (matchedRepos.length > 1) {
     console.log(brightBlue("- Select a repository to clone"));
-    render(<SelectRepo repos={matchedRepos} />);
+    render(<SelectRepo repos={matchedRepos} user={flags.user} />);
 
     // カーソルを表示
     const showCursor = new TextEncoder().encode("\x1b[?25h");

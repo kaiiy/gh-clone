@@ -9,11 +9,12 @@ interface Item {
 
 interface SelectRepoProps {
     repos: string[];
+    user: string | undefined;
 }
 
-const SelectRepo = ({ repos }: SelectRepoProps) => {
+const SelectRepo = ({ user, repos }: SelectRepoProps) => {
     const handleSelect = async (item: Item) => {
-        await ghClone(item.value);
+        await ghClone(user, item.value);
     };
 
     const items = repos.map((repo) => ({

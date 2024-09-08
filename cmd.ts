@@ -1,4 +1,5 @@
 import { brightGreen } from "jsr:@std/fmt/colors";
+import { accurateRepo } from "./lib.ts";
 
 const ghList = async (user: string | undefined) => {
     const ghListCmd = new Deno.Command("gh", {
@@ -24,18 +25,19 @@ const ghList = async (user: string | undefined) => {
     return repos;
 };
 
-const ghClone = async (repo: string) => {
+const ghClone = async (user: string | undefined, repo: string) => {
+    const repoName = accurateRepo(user, repo);
     const ghCloneCmd = new Deno.Command("gh", {
         args: [
             "repo",
             "clone",
-            repo,
+            repoName,
         ],
         stdout: "piped",
         stderr: "piped",
     });
     const process = ghCloneCmd.spawn();
-    console.log(brightGreen("- gh repo clone " + repo));
+    console.log(brightGreen("- gh repo clone " + repoName));
     process.stdout.pipeTo(Deno.stdout.writable);
     process.stderr.pipeTo(Deno.stderr.writable);
 
