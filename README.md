@@ -1,5 +1,7 @@
 # gh clone
 
+gh-clone is a wrapper for the gh clone command, allowing us to search for and clone repositories interactively.
+
 ## Requirements
 
 - [gh](https://github.com/cli/cli)
@@ -16,7 +18,7 @@ brew install kaiiy/tap/gh-clone
 Usage: gh-clone [options] [repository]
 
 Options:
--u, --user <user>   List repositories of the specified user
+-u, --user <user>   Set the specified user
 -v, --version       Show version
 -h, --help          Show help
 ```
