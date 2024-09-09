@@ -2,8 +2,7 @@
 
 ## Requirements
 
-- Deno (>=1.46)
-- gh
+- [gh](https://github.com/cli/cli)
 
 ## Installation
 
