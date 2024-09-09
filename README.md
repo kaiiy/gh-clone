@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Homebrew
+- Deno (>=1.46)
 - gh
 
 ## Installation
