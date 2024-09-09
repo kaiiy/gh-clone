@@ -4,6 +4,7 @@
     "specifiers": {
       "jsr:@std/cli@1.0.4": "jsr:@std/cli@1.0.4",
       "jsr:@std/fmt": "jsr:@std/fmt@1.0.1",
+      "npm:@types/node": "npm:@types/node@18.16.19",
       "npm:ink-select-input@6.0.0": "npm:ink-select-input@6.0.0_ink@5.0.1__react@18.3.1_react@18.3.1",
       "npm:ink@5.0.1": "npm:ink@5.0.1_react@18.3.1",
       "npm:react@17.0.2": "npm:react@17.0.2"
@@ -23,6 +24,10 @@
           "ansi-styles": "ansi-styles@6.2.1",
           "is-fullwidth-code-point": "is-fullwidth-code-point@4.0.0"
         }
+      },
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
+        "dependencies": {}
       },
       "ansi-escapes@7.0.0": {
         "integrity": "sha512-GdYO7a61mR0fOlAsvC9/rIHf7L96sBc6dEWzeOu+KAea5bZyQRPIpojrVoI4AXGJS/ycu/fBTdLrUkA4ODrvjw==",
