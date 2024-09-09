@@ -1,4 +1,4 @@
-# gh clone
+# gh-clone
 
 gh-clone is a wrapper for the gh clone command, allowing us to search for and clone repositories interactively.
 
