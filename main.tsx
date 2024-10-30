@@ -6,7 +6,7 @@ import SelectRepo from "./SelectRepo.tsx";
 import { brightBlue } from "jsr:@std/fmt/colors";
 import { extractInputRepo, partialMatch } from "./lib.ts";
 
-const VERSION = "0.1.3";
+const VERSION = "0.1.4";
 
 const main = async () => {
   const flags = parseArgs(Deno.args, {
