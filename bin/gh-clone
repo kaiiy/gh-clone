@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec deno run --allow-net --allow-env --allow-read --allow-run --no-config 'https://raw.githubusercontent.com/kaiiy/gh-clone/v0.1.4/main.tsx' "$@"
+exec deno run --allow-net --allow-env --allow-read --allow-run --no-config 'https://raw.githubusercontent.com/kaiiy/gh-clone/v0.1.5/main.tsx' "$@"
