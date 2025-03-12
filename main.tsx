@@ -1,6 +1,6 @@
 import { parseArgs } from "jsr:@std/cli@1.0.4";
-import { render } from "npm:ink@5.0.1";
-import React from "npm:react@17.0.2";
+import { render } from "npm:ink@5.2.0";
+import React from "npm:react@18.3.1";
 import { ghClone, ghList } from "./cmd.ts";
 import SelectRepo from "./SelectRepo.tsx";
 import { brightBlue } from "jsr:@std/fmt/colors";
