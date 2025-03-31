@@ -3,6 +3,7 @@
   "specifiers": {
     "jsr:@std/cli@1.0.4": "1.0.4",
     "jsr:@std/fmt@*": "1.0.3",
+    "jsr:@std/fmt@1.0.3": "1.0.3",
     "npm:@types/node@*": "22.12.0",
     "npm:ink-select-input@6.0.0": "6.0.0_ink@5.0.1__react@18.3.1_react@18.3.1",
     "npm:ink@5.0.1": "5.0.1_react@18.3.1",
@@ -10,7 +11,8 @@
     "npm:react@0.0.0-experimental-0ca3deeb-20250311": "0.0.0-experimental-0ca3deeb-20250311",
     "npm:react@17.0.2": "17.0.2",
     "npm:react@18.3.1": "18.3.1",
-    "npm:react@19.0.0": "19.0.0"
+    "npm:react@19.0.0": "19.0.0",
+    "npm:react@19.1.0": "19.1.0"
   },
   "jsr": {
     "@std/cli@1.0.4": {
@@ -245,6 +247,9 @@
     },
     "react@19.0.0": {
       "integrity": "sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ=="
+    },
+    "react@19.1.0": {
+      "integrity": "sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg=="
     },
     "restore-cursor@4.0.0": {
       "integrity": "sha512-I9fPXU9geO9bHOt9pHHOhOkYerIMsmVaWB0rA2AI9ERh/+x/i7MV5HKBNrg+ljO5eoPVgCcnFuRjJ9uH6I/3eg==",

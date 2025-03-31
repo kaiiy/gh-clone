@@ -1,15 +1,12 @@
-import { parseArgs } from "jsr:@std/cli@1.0.4";
-import { render } from "npm:ink@5.2.0";
-import React from "npm:react@18.3.1";
 import { ghClone, ghList } from "./cmd.ts";
 import SelectRepo from "./SelectRepo.tsx";
-import { brightBlue } from "jsr:@std/fmt/colors";
 import { extractInputRepo, partialMatch } from "./lib.ts";
+import { cli, colors, ink, React } from "./deps.ts";
 
-const VERSION = "0.1.5";
+const VERSION = "0.1.6";
 
 const main = async () => {
-  const flags = parseArgs(Deno.args, {
+  const flags = cli.parseArgs(Deno.args, {
     boolean: ["version", "help"],
     string: ["user"],
     alias: {
@@ -47,8 +44,10 @@ Options:
   if (matchedRepos.length === 1) {
     await ghClone(flags.user, matchedRepos[0]);
   } else if (matchedRepos.length > 1) {
-    console.log(brightBlue("- Select a repository to clone"));
-    render(<SelectRepo repos={matchedRepos} user={flags.user} />);
+    console.log(colors.brightBlue("- Select a repository to clone"));
+    ink.render(
+      <SelectRepo repos={matchedRepos} user={flags.user} />,
+    );
 
     // カーソルを表示
     const showCursor = new TextEncoder().encode("\x1b[?25h");
