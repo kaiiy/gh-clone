@@ -1,5 +1,4 @@
-import { ghClone } from "./cmd.ts";
-import { React, SelectInput } from "./deps.ts";
+import { ink, React, ui } from "./deps.ts";
 
 interface Item {
   label: string;
@@ -8,12 +7,16 @@ interface Item {
 
 interface SelectRepoProps {
   repos: string[];
-  user: string | undefined;
+  onSelect: (item: string) => void;
 }
 
-const SelectRepo = ({ user, repos }: SelectRepoProps) => {
-  const handleSelect = async (item: Item) => {
-    await ghClone(user, item.value);
+const SelectRepo = ({ repos, onSelect }: SelectRepoProps) => {
+  const { exit } = ink.useApp();
+
+  const handleSelect = (repo: string) => {
+    console.log(`Hi`);
+    onSelect(repo);
+    exit();
   };
 
   const items = repos.map((repo) => ({
@@ -21,7 +24,13 @@ const SelectRepo = ({ user, repos }: SelectRepoProps) => {
     value: repo,
   })) satisfies Item[];
 
-  return <SelectInput items={items} onSelect={handleSelect} limit={10} />;
+  return (
+    <ui.Select
+      options={items}
+      onChange={handleSelect}
+      visibleOptionCount={10}
+    />
+  );
 };
 
 export default SelectRepo;

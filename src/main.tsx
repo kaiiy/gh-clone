@@ -3,7 +3,7 @@ import SelectRepo from "./SelectRepo.tsx";
 import { extractInputRepo, partialMatch } from "./lib.ts";
 import { cli, colors, ink, React } from "./deps.ts";
 
-const VERSION = "0.1.6";
+const VERSION = "0.2.0";
 
 const main = async () => {
   const flags = cli.parseArgs(Deno.args, {
@@ -45,8 +45,15 @@ Options:
     await ghClone(flags.user, matchedRepos[0]);
   } else if (matchedRepos.length > 1) {
     console.log(colors.brightBlue("- Select a repository to clone"));
+
     ink.render(
-      <SelectRepo repos={matchedRepos} user={flags.user} />,
+      <SelectRepo
+        repos={matchedRepos}
+        onSelect={async (repo: string) => {
+          await ghClone(flags.user, repo);
+          Deno.exit(0);
+        }}
+      />,
     );
 
     // カーソルを表示
