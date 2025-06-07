@@ -14,7 +14,6 @@ const SelectRepo = ({ repos, onSelect }: SelectRepoProps) => {
   const { exit } = ink.useApp();
 
   const handleSelect = (repo: string) => {
-    console.log(`Hi`);
     onSelect(repo);
     exit();
   };
