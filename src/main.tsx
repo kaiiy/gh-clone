@@ -42,17 +42,22 @@ Options:
   const matchedRepos = partialMatch(repos, inputRepo);
   // 部分一致が1個だけ
   if (matchedRepos.length === 1) {
-    await ghClone(flags.user, matchedRepos[0]);
+    const code = await ghClone(flags.user, matchedRepos[0]);
+    Deno.exit(code);
   } else if (matchedRepos.length > 1) {
     console.log(colors.brightBlue("- Select a repository to clone"));
 
-    ink.render(
+    let app: ink.Instance;
+    const handleSelect = async (repo: string) => {
+      app.unmount(); // unmount list before logging clone command
+      const code = await ghClone(flags.user, repo);
+      Deno.exit(code);
+    };
+
+    app = ink.render(
       <SelectRepo
         repos={matchedRepos}
-        onSelect={async (repo: string) => {
-          await ghClone(flags.user, repo);
-          Deno.exit(0);
-        }}
+        onSelect={handleSelect}
       />,
     );
 

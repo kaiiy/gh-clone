@@ -1,4 +1,4 @@
-import { ink, React, ui } from "./deps.ts";
+import { React, ui } from "./deps.ts";
 
 interface Item {
   label: string;
@@ -7,15 +7,12 @@ interface Item {
 
 interface SelectRepoProps {
   repos: string[];
-  onSelect: (item: string) => void;
+  onSelect: (item: string) => void | Promise<void>;
 }
 
 const SelectRepo = ({ repos, onSelect }: SelectRepoProps) => {
-  const { exit } = ink.useApp();
-
-  const handleSelect = (repo: string) => {
-    onSelect(repo);
-    exit();
+  const handleSelect = async (repo: string) => {
+    await onSelect(repo);
   };
 
   const items = repos.map((repo) => ({

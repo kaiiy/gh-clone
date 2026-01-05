@@ -42,7 +42,7 @@ const ghClone = async (user: string | undefined, repo: string) => {
   process.stderr.pipeTo(Deno.stderr.writable);
 
   const { code } = await process.status;
-  Deno.exit(code);
+  return code;
 };
 
 export { ghClone, ghList };
