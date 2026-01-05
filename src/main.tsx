@@ -3,7 +3,7 @@ import SelectRepo from "./SelectRepo.tsx";
 import { extractInputRepo, partialMatch } from "./lib.ts";
 import { cli, colors, ink, React } from "./deps.ts";
 
-const VERSION = "0.2.1";
+const VERSION = "0.2.2";
 
 const main = async () => {
   const flags = cli.parseArgs(Deno.args, {
